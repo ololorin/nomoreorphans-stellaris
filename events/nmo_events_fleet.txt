@@ -1,0 +1,191 @@
+namespace = nomoreorphans
+fleet_event = {
+	#Save fleet shipsize count
+	id = nomoreorphans.1
+	is_triggered_only = yes
+	hide_window = yes
+	immediate = {
+		set_variable = {
+			which = num_corvettes
+			value = 0
+		}
+		set_variable = {
+			which = num_destroyers
+			value = 0
+		}
+		set_variable = {
+			which = num_cruisers
+			value = 0
+		}
+		set_variable = {
+			which = num_battleships
+			value = 0
+		}
+		set_variable = {
+			which = num_titans
+			value = 0
+		}
+		set_variable = {
+			which = num_crisis_corvettes
+			value = 0
+		}
+		set_variable = {
+			which = num_crisis_destroyers
+			value = 0
+		}
+		set_variable = {
+			which = num_crisis_cruisers
+			value = 0
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = corvette
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = destroyer
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = cruiser
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = battleship
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = titan
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = crisis_corvette
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = crisis_destroyer
+			VAL = 1
+		}
+		change_ship_variable = {
+			VAR = num
+			TYPE = crisis_cruiser
+			VAL = 1
+		}
+	}
+}
+
+fleet_event = {
+	#Reinforce fleet using saved counts
+	id = nomoreorphans.2
+	is_triggered_only = yes
+	hide_window = yes
+	immediate = {
+		set_variable = {
+			which = delta_corvettes
+			value = num_corvettes
+		}
+		set_variable = {
+			which = delta_destroyers
+			value = num_destroyers
+		}
+		set_variable = {
+			which = delta_cruisers
+			value = num_cruisers
+		}
+		set_variable = {
+			which = delta_battleships
+			value = num_battleships
+		}
+		set_variable = {
+			which = delta_titans
+			value = num_titans
+		}
+		set_variable = {
+			which = delta_crisis_corvettes
+			value = num_crisis_corvettes
+		}
+		set_variable = {
+			which = delta_crisis_destroyers
+			value = num_crisis_destroyers
+		}
+		set_variable = {
+			which = delta_crisis_cruisers
+			value = num_crisis_cruisers
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = corvette
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = destroyer
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = cruiser
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = battleship
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = titan
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = crisis_corvette
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = crisis_destroyer
+			VAL = -1
+		}
+		change_ship_variable = {
+			VAR = delta
+			TYPE = crisis_cruiser
+			VAL = -1
+		}
+		order_merge = {
+			TYPE = corvette
+		}
+		order_merge = {
+			TYPE = destroyer
+		}
+		order_merge = {
+			TYPE = cruiser
+		}
+		order_merge = {
+			TYPE = battleship
+		}
+		order_merge = {
+			TYPE = titan
+		}
+		order_merge = {
+			TYPE = crisis_corvette
+		}
+		order_merge = {
+			TYPE = crisis_destroyer
+		}
+		order_merge = {
+			TYPE = crisis_cruiser
+		}
+		owner = {
+			every_owned_fleet = {
+				remove_fleet_flag = merging_flag
+			}
+		}
+	}
+}

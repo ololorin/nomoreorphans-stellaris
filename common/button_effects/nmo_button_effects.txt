@@ -1,0 +1,42 @@
+save_count_button_effect = {
+	potential = {
+		root = {
+			is_ship_class = shipclass_military
+		}
+	}
+	allow = {
+		root = {
+			num_ships > 1
+		}
+	}
+	effect = {
+		custom_tooltip = "Save ship types count"
+		hidden_effect = {
+			fleet_event = {
+				id = nomoreorphans.1
+			}
+		}
+	}
+}
+
+reinforce_count_button_effect = {
+	potential = {
+		root = {
+			is_ship_class = shipclass_military
+		}
+	}
+	allow = {
+		hidden_trigger = {
+			is_variable_set = num_corvettes
+		}
+		custom_tooltip = "Save ship types count first"
+	}
+	effect = {
+		custom_tooltip = "Rally orphaned ships using saved count. Note that this action only considers ships already in fleet, so repeated clicks may result in fleet overflow"
+		hidden_effect = {
+			fleet_event = {
+				id = nomoreorphans.2
+			}
+		}
+	}
+}

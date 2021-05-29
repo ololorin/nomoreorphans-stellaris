@@ -1,0 +1,41 @@
+namespace = nomoreorphans
+change_ship_variable = {
+	every_owned_ship = {
+		limit = {
+			is_ship_size = $TYPE$
+		}
+		root = {
+			change_variable = {
+				which = $VAR$_$TYPE$s
+				value = $VAL$
+			}
+		}
+	}
+}
+
+order_merge = {
+	while = {
+		count = delta_$TYPE$s
+		root.owner = {
+			random_owned_fleet = {
+				limit = {
+					num_ships = 1
+					is_ship_class = shipclass_military
+					is_ship_size = $TYPE$
+					fleet_power > 0
+					NOT = {
+						has_fleet_flag = merging_flag
+					}
+					is_fleet_idle = yes
+				}
+				set_fleet_flag = merging_flag
+				queue_actions = {
+					merge_fleet = {
+						target = root
+						allow_ftl = yes
+					}
+				}
+			}
+		}
+	}
+}
